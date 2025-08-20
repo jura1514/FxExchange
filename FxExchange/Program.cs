@@ -1,5 +1,6 @@
 ﻿using FxExchange.Configuration;
 using FxExchange.Services;
+using FxExchange.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -37,6 +38,7 @@ public static class Program
                 services.Configure<ExchangeRateConfiguration>(
                     context.Configuration.GetSection(ExchangeRateConfiguration.SectionName));
 
+                services.AddScoped<IConsoleHelper, ConsoleHelper>();
                 services.AddScoped<IExchangeRateProvider, StaticExchangeRateProvider>();
                 services.AddScoped<IUserInterface, ConsoleUserInterface>();
                 services.AddScoped<IExchangeService, StaticExchangeService>();

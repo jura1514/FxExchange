@@ -1,13 +1,15 @@
 using FxExchange.Models;
+using FxExchange.Utils;
 
 namespace FxExchange.Services;
 
-public class ConsoleUserInterface(IExchangeRateProvider exchangeRateProvider) : IUserInterface
+public class ConsoleUserInterface(IExchangeRateProvider exchangeRateProvider, IConsoleHelper consoleHelper)
+    : IUserInterface
 {
     public (Currency, Currency) GetIsoCurrencyPair()
     {
-        Console.Write("Enter currency pair, e.g. EUR/DKK: ");
-        var input = Console.ReadLine()?.ToUpperInvariant();
+        consoleHelper.Write("Enter currency pair, e.g. EUR/DKK: ");
+        var input = consoleHelper.ReadLine()?.ToUpperInvariant();
 
         if (string.IsNullOrEmpty(input))
             throw new ArgumentException("Currency pair cannot be empty.");
@@ -29,8 +31,8 @@ public class ConsoleUserInterface(IExchangeRateProvider exchangeRateProvider) : 
 
     public decimal GetAmount()
     {
-        Console.Write("Enter amount to convert: ");
-        var input = Console.ReadLine();
+        consoleHelper.Write("Enter amount to convert: ");
+        var input = consoleHelper.ReadLine();
 
         if (string.IsNullOrEmpty(input) || !decimal.TryParse(input, out var amount) || amount <= 0)
         {
@@ -42,6 +44,7 @@ public class ConsoleUserInterface(IExchangeRateProvider exchangeRateProvider) : 
 
     public void DisplayResult(decimal amount, Currency baseCurrency, decimal convertedAmount, Currency quoteCurrency)
     {
-        Console.WriteLine($"{amount} {baseCurrency.ToString()} = {convertedAmount:F2} {quoteCurrency.ToString()}");
+        consoleHelper.WriteLine(
+            $"{amount} {baseCurrency.ToString()} = {convertedAmount:F2} {quoteCurrency.ToString()}");
     }
 }

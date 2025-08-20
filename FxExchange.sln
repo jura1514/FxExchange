@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxExchange", "FxExchange\FxExchange.csproj", "{91ADA59C-B586-4C4E-9B4F-C17E13AED0AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FxExchange.Tests", "FxExchange.Tests\FxExchange.Tests.csproj", "{EFCC5B9B-B59A-47A1-A6A3-0776D907D4F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{91ADA59C-B586-4C4E-9B4F-C17E13AED0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91ADA59C-B586-4C4E-9B4F-C17E13AED0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91ADA59C-B586-4C4E-9B4F-C17E13AED0AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCC5B9B-B59A-47A1-A6A3-0776D907D4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCC5B9B-B59A-47A1-A6A3-0776D907D4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCC5B9B-B59A-47A1-A6A3-0776D907D4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCC5B9B-B59A-47A1-A6A3-0776D907D4F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

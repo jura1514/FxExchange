@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace FxExchange.Services;
 
-public class StaticExchangeRateProvider : IExchangeRateProvider
+public class StaticExchangeRateProvider(IOptions<ExchangeRateConfiguration> options) : IExchangeRateProvider
 {
     private static readonly Dictionary<Currency, decimal> StaticRatesInDkk = new()
     {
@@ -18,12 +18,9 @@ public class StaticExchangeRateProvider : IExchangeRateProvider
         { new Currency("JPY", "Japanske yen"), 0.059740m }
     };
 
-    private readonly Dictionary<Currency, decimal> _ratesInDkk;
-
-    public StaticExchangeRateProvider(IOptions<ExchangeRateConfiguration> options)
-    {
-        _ratesInDkk = options.Value.LoadFromConfig ? InitializeRatesFromConfiguration(options.Value) : StaticRatesInDkk;
-    }
+    private readonly Dictionary<Currency, decimal> _ratesInDkk = options.Value.LoadFromConfig
+        ? InitializeRatesFromConfiguration(options.Value)
+        : StaticRatesInDkk;
 
     public decimal GetRate(Currency currency)
     {
